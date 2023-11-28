@@ -1,0 +1,43 @@
+/* Add your custom styles for the header */
+
+body {
+    background-color: #fff; /* Body background color */
+    margin: 0; /* Remove default body margin */
+}
+
+header {
+    background-color:white; /* Header background color */
+    color: #fff; /* Text color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Align items to the start and end of the header */
+}
+
+h1 {
+    margin:0;
+    margin-left:20px;
+    color: #9370db; 
+    
+}
+
+/* Style for the logout link/button */
+a {
+	font-family: 'Arial', sans-serif;
+    color: #333; /* Link text color (grey) */
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #333; /* Border color (grey) */
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Hover effect for the logout link/button */
+a:hover {
+    background-color: #333; /* Hover background color (grey) */
+    color: #fff; /* Hover text color (white) */
+}
+
+/* Align the logout button to the right */
+.right {
+    margin-left: auto;
+}
