@@ -28,6 +28,12 @@ public class MockDatabase {
 				 toDoItems.add(new ToDoItems(1, 1, "Work", "Complete project report", "#3498db", timeFormat.parse("15:00:00")));
 		         toDoItems.add(new ToDoItems(2, 1, "Personal", "Go for a run", "#2ecc71", timeFormat.parse("15:00:00")));
 		         toDoItems.add(new ToDoItems(3, 2, "Study", "Read chapter 5", "#e74c3c", timeFormat.parse("15:00:00")));
+		         toDoItems.add(new ToDoItems(4, 2, "Work", "Prepare presentation", "#3498db", timeFormat.parse("10:30:00")));
+		         toDoItems.add(new ToDoItems(5, 1, "Personal", "Cook dinner", "#2ecc71", timeFormat.parse("18:45:00")));
+		         toDoItems.add(new ToDoItems(6, 2, "Study", "Review lecture notes", "#e74c3c", timeFormat.parse("14:15:00")));
+		         toDoItems.add(new ToDoItems(7, 1, "Work", "Attend team meeting", "#3498db", timeFormat.parse("09:00:00")));
+		         toDoItems.add(new ToDoItems(8, 2, "Personal", "Call family", "#2ecc71", timeFormat.parse("21:30:00")));
+
 
 			news.add(new News(1, "Stop thinking of toppling govt, we broke green wave by winning Selangor, Gobind tells PN", "SHAH ALAM: Pakatan Harapan halted the \"green wave\" of Perikatan Nasional when the former won the Selangor state election, said Selangor DAP chairman Gobind Singh Deo.\r\n" + 
 					

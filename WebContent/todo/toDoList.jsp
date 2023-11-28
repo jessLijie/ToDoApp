@@ -30,21 +30,49 @@ body {
 	padding: 20px;
 }
 </style>
+<script>
+    function filterToDoItems(selectedCategory) {
+        console.log('Selected Category:', selectedCategory);
+
+        var toDoItems = document.querySelectorAll('.todo-item');
+
+        toDoItems.forEach(function (toDoItem) {
+            var category = toDoItem.dataset.category;
+            console.log('Item Category:', category);
+
+            if (selectedCategory === 'all' || selectedCategory === category) {
+                toDoItem.style.display = 'block';
+            } else {
+                toDoItem.style.display = 'none';
+            }
+        });
+    }
+</script>
+
 </head>
 <body>
 
 	<div class="container">
 		<h1>Today</h1>
+		
 		<a href="${pageContext.request.contextPath}/todo/addItem.jsp">+Add
-			Item</a>
+			Item</a> <br><br>
+			<label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter" onchange="filterToDoItems(this.value)">
+            <option value="all">All</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Study">Study</option>
+        </select>
 		<ul>
 			<%
 				ArrayList<ToDoItems> toDoItems = (ArrayList<ToDoItems>) request.getAttribute("toDoItems");
 				if (toDoItems != null && !toDoItems.isEmpty()) {
 					for (ToDoItems toDoItem : toDoItems) {
 			%>
+			
 
-			<li>
+			<li class="todo-item" data-category="<%=toDoItem.getCategory()%>">
 				<p class="todo-title">
 					<strong><span style="color: <%=toDoItem.getColorCode()%>">&#11044;</span></strong>
 					<%=toDoItem.getCategory()%></p>
@@ -57,7 +85,7 @@ body {
 					<fmt:formatDate value="<%=toDoItem.getDueTime()%>" pattern="hh:mm a" />
 				</p>
 			</li>
-			<hr>
+			
 			<%
 				}
 			%>
