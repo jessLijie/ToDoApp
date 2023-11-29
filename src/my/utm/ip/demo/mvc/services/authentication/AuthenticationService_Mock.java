@@ -19,7 +19,7 @@ public class AuthenticationService_Mock implements AuthenticationService {
 
 		for (final User u : MockDatabase.users) {
 			if (username.equals(u.getUsername()) && password.equals(u.getPassword()))
-				return new User(u.getRealName(), u.getUsername(), u.getPassword());
+				return new User(u.getId(),u.getRealName(), u.getUsername(), u.getPassword());
 		}
 
 		return null;

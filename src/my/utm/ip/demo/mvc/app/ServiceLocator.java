@@ -9,9 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import my.utm.ip.demo.mvc.services.Service;
 import my.utm.ip.demo.mvc.services.authentication.AuthenticationService_Mock;
-import my.utm.ip.demo.mvc.services.news.NewsService;
-import my.utm.ip.demo.mvc.services.news.ItemsService;
 import my.utm.ip.demo.mvc.services.session.SessionService_Http;
+import my.utm.ip.demo.mvc.services.todo.ItemsService;
 
 public class ServiceLocator {
 	private static Boolean loaded = false;
@@ -70,15 +69,7 @@ public class ServiceLocator {
 		return null;
 	}
 
-	public static NewsService getNewsService() {
-		 Service service = services.get("NEWS_SERVICE");
-		    if (service instanceof NewsService) {
-		        return (NewsService) service;
-		    } else {
-		        throw new IllegalStateException("NewsService is not registered or is of the wrong type.");
-		    }
-	}
-	
+
 	public static ItemsService getItemsService() {
 		 Service service = services.get("ITEMS_SERVICE");
 		    if (service instanceof ItemsService) {

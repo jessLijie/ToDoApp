@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add Items</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/app/css/newslist.css" />
+	href="${pageContext.request.contextPath}/app/css/todo.css" />
 <style>
 body {
 	font-family: 'Arial', sans-serif;
@@ -84,20 +84,20 @@ button:hover {
 }
 
 #dueTime {
-    display: flex;
+	display: flex;
 }
 
 #dueHour, #dueMinute, #dueSecond {
-    width:100px;
-    margin-right: 5px;
+	width: 100px;
+	margin-right: 5px;
 }
 </style>
 </head>
 <body>
 	<div class="container">
 		<h1>Add an item:</h1>
-		<form action="/${Configs.APP}/toDoList" method="post">
-			<label for="colorCode">Color Label:</label> <select id="colorCode"
+		<form action="/${Configs.APP}/addItemController" method="post">
+			<label for="colorCode">Color Label</label> <select id="colorCode"
 				name="colorCode" required>
 				<option value="#e74c3c" style="background-color: #e74c3c;">Red</option>
 				<option value="#3498db" style="background-color: #3498db;">Blue</option>
@@ -106,21 +106,15 @@ button:hover {
 				<option value="#2ecc71" style="background-color: #2ecc71;">Green</option>
 				<option value="#8e44ad" style="background-color: #8e44ad;">Purple</option>
 
-			</select> <br> <label for="category">Category:</label> <select
+			</select> <br> <label for="category">Category</label> <select
 				id="category" name="category" required>
 				<option value="Work">Work</option>
 				<option value="Personal">Personal</option>
 				<option value="Study">Study</option>
-			</select><br> <label for="items">Item:</label>
+			</select><br> <label for="items">Item</label>
 			<textarea id="items" name="items" rows="4" required></textarea>
-			<br> <label for="dueTime">Due Time (24hr):</label>
-<div id="dueTime">
-    <input type="number" id="dueHour" name="dueHour" min="0" max="23" placeholder="Hour"value="00" required>
-    
-    <input type="number" id="dueMinute" name="dueMinute" min="0" max="59" placeholder="Minute"value="00" required>
-    
-    <input type="number" id="dueSecond" name="dueSecond" min="0" max="59" placeholder="Second"value="00" required>
-</div> <br>
+			<br> <label for="dueTime">Due Time</label> <input type="time"
+				id="dueTime" name="dueTime" required> <br>
 
 
 

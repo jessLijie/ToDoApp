@@ -10,6 +10,10 @@ public class ToDoItems {
 	private String colorCode;
 	private Date dueTime;
 	
+	public ToDoItems() {
+		super();
+	}
+
 	public ToDoItems(int id, int userId, String category, String items, String colorCode, Date dueTime) {
 		this.id = id;
 		this.userId = userId;

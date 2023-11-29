@@ -5,8 +5,9 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ page import="javax.servlet.http.HttpSession"%>
 <%@ include file="/app/jsp/header.jspf"%>
+<%@ page import="my.utm.ip.demo.mvc.models.User"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>To Do List</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/app/css/newslist.css" />
+	href="${pageContext.request.contextPath}/app/css/todo.css" />
 <style>
 body {
 	font-family: 'Arial', sans-serif;
@@ -31,47 +32,71 @@ body {
 }
 </style>
 <script>
-    function filterToDoItems(selectedCategory) {
-        console.log('Selected Category:', selectedCategory);
+	function filterToDoItems(selectedCategory) {
+		console.log('Selected Category:', selectedCategory);
 
-        var toDoItems = document.querySelectorAll('.todo-item');
+		var toDoItems = document.querySelectorAll('.todo-item');
 
-        toDoItems.forEach(function (toDoItem) {
-            var category = toDoItem.dataset.category;
-            console.log('Item Category:', category);
+		toDoItems.forEach(function(toDoItem) {
+			var category = toDoItem.dataset.category;
+			console.log('Item Category:', category);
 
-            if (selectedCategory === 'all' || selectedCategory === category) {
-                toDoItem.style.display = 'block';
-            } else {
-                toDoItem.style.display = 'none';
-            }
-        });
-    }
+			if (selectedCategory === 'all' || selectedCategory === category) {
+				toDoItem.style.display = 'block';
+			} else {
+				toDoItem.style.display = 'none';
+			}
+		});
+	}
 </script>
 
 </head>
 <body>
 
+	<%
+		session = request.getSession(false);
+		User user = (User) request.getSession().getAttribute("user");
+	%>
 	<div class="container">
 		<h1>Today</h1>
-		
+		<h3>Hello <%=user.getRealName()%></h3>
+
 		<a href="${pageContext.request.contextPath}/todo/addItem.jsp">+Add
-			Item</a> <br><br>
-			<label for="categoryFilter">Filter by Category:</label>
-        <select id="categoryFilter" onchange="filterToDoItems(this.value)">
-            <option value="all">All</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-            <option value="Study">Study</option>
-        </select>
+			Item</a> <br>
+		<br> <label for="categoryFilter">Filter by Category:</label> <select
+			id="categoryFilter" onchange="filterToDoItems(this.value)">
+			<option value="all">All</option>
+			<option value="Work">Work</option>
+			<option value="Personal">Personal</option>
+			<option value="Study">Study</option>
+		</select>
 		<ul>
 			<%
-				ArrayList<ToDoItems> toDoItems = (ArrayList<ToDoItems>) request.getAttribute("toDoItems");
+				ArrayList<ToDoItems> toDoItems = (ArrayList<ToDoItems>) session.getAttribute("toDoItems");
 				if (toDoItems != null && !toDoItems.isEmpty()) {
 					for (ToDoItems toDoItem : toDoItems) {
-			%>
-			
+					if(user.getId()==5){%>
+						<li class="todo-item" data-category="<%=toDoItem.getCategory()%>">
+				<p class="todo-title">
+					<strong><span style="color: <%=toDoItem.getColorCode()%>">&#11044;</span></strong>
+					<%=toDoItem.getCategory()%></p>
+				<p class="todo-content">
+					<strong>&#8594;</strong>
+					<%=toDoItem.getItems()%></p>
 
+				<p class="todo-content">
+					<strong>&#8987;</strong>
+					<fmt:formatDate value="<%=toDoItem.getDueTime()%>"
+						pattern="hh:mm a" />
+				</p>
+
+				<p class="todo-user">
+					Created by
+					 <%=user.getRealNameById(toDoItem.getUserId())%>
+			</li>
+					<%}
+					else if (toDoItem.getUserId() == user.getId()) {
+						%>
 			<li class="todo-item" data-category="<%=toDoItem.getCategory()%>">
 				<p class="todo-title">
 					<strong><span style="color: <%=toDoItem.getColorCode()%>">&#11044;</span></strong>
@@ -82,12 +107,18 @@ body {
 
 				<p class="todo-content">
 					<strong>&#8987;</strong>
-					<fmt:formatDate value="<%=toDoItem.getDueTime()%>" pattern="hh:mm a" />
+					<fmt:formatDate value="<%=toDoItem.getDueTime()%>"
+						pattern="hh:mm a" />
 				</p>
+
+				<p class="todo-user">
+					Created by
+					 <%=user.getRealNameById(toDoItem.getUserId())%>
 			</li>
-			
+
 			<%
 				}
+					}
 			%>
 		</ul>
 		<%

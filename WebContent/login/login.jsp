@@ -15,7 +15,7 @@
     <div class="container">
         <c:choose>
             <c:when test="${user.getAuthenticated()}">
-                <c:redirect url="/${Configs.APP}/toDoList" />
+                <c:redirect url="/toDoList" />
             </c:when>
             <c:otherwise>
                 <h1>Login Page</h1>
