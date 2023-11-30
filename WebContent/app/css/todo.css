@@ -3,12 +3,7 @@
     margin: 0 auto;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-h3 {
+h1, h3{
     text-align: center;
     color: #333;
 }
@@ -38,9 +33,30 @@ li:hover {
     margin-bottom: 5px;
 }
 
+.todo-item-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
 .todo-content {
     color: #666;
     margin-bottom: 10px;
+}
+	
+.todo-time {
+    color: #666;
+	margin-right: 20px;
+}	
+
+.todo-item-content{
+	margin-left: 20px;	
 }
 
 .todo-date {
@@ -58,3 +74,17 @@ li:hover {
 li + li {
     margin-top: 10px;
 }
+
+.add-item-box{
+	padding-bottom: 15px;
+}
+
+.add-item-button {
+    background-color: black;
+    opacity: 0.85;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 140px;
+    
+ }

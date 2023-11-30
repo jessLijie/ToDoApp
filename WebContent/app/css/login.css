@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-    background-image: url('/MVCWebApp/app/images/login.jpg'); 
+    background-image: url('/MVCWebApp/app/images/login-bg.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,10 +11,10 @@ body {
 }
 
 .container {
-    max-width: 700px;
+    max-width: 500px;
     margin: 150px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.4); 
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -44,19 +44,19 @@ input[type="submit"] {
     margin-bottom: 15px;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 10px;
     display: inline-block;
 }
 
 input[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
+    background-color: black;
+    color: white;
+    border: 1px solid grey;
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+	transform: translateY(-2px);    
 }
 
 @media screen and (max-width: 400px) {

@@ -20,10 +20,12 @@
             <c:otherwise>
                 <h1>Login Page</h1>
                 <form id="loginForm" action="/${Configs.APP}/login" method="post">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" />
+                    <div class= "login_box">
+                    	<input type="text" id="username" name="username" placeholder= "Username" required>
+                    </div>
+                    <div class= "login_box">
+                    	<input type="text" id="password" name="password" placeholder= "Password" required>
+                    </div>                    
                     <label for="login"></label>
                     <input type="submit" id="login" name="login" value="Login">
                 </form>

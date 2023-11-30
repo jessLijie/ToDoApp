@@ -70,17 +70,18 @@ select:hover {
 }
 
 button {
-	background-color: #3498db;
-	color: #fff;
+	background-color: black;
+	color: white;
 	padding: 10px;
-	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 16px;
+	border: 1px solid #333;
 }
 
 button:hover {
-	background-color: #2980b9;
+	background-color: white;
+	color: black;
 }
 
 #dueTime {
@@ -95,7 +96,7 @@ button:hover {
 </head>
 <body>
 	<div class="container">
-		<h1>Add an item:</h1>
+		<h1>Add an item</h1>
 		<form action="/${Configs.APP}/addItemController" method="post">
 			<label for="colorCode">Color Label</label> <select id="colorCode"
 				name="colorCode" required>
